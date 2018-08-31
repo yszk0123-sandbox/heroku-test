@@ -1,0 +1,28 @@
+version: "2"
+services:
+  heroku-test-backend:
+    container_name: heroku-test-backend
+    image: postgres:10.4
+    ports:
+      - "5432:5432"
+    volumes:
+      - volume-db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: root
+      POSTGRES_PASSWORD: root
+    networks:
+      - default
+      - network-global
+  heroku-test-session:
+    container_name: heroku-test-session
+    image: redis:4.0.11-alpine
+    ports:
+      - "6379:6379"
+    networks:
+      - default
+      - network-global
+volumes:
+  volume-db:
+networks:
+  network-global:
+    driver: bridge
