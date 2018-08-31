@@ -9,6 +9,11 @@ const createApp = async () => {
   const app = express();
   const client = await createDatabaseClient();
 
+  if (config.production) {
+    // cf. https://github.com/expressjs/session/tree/v1.15.6#cookiesecure
+    app.set('trust proxy', 1);
+  }
+
   app.use((req, res, next) => {
     req.client = client;
     next();
