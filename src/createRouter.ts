@@ -1,7 +1,7 @@
-const express = require('express');
-const { config } = require('./config');
+import express from 'express';
+import { config } from './config';
 
-const createRouter = () => {
+export const createRouter = () => {
   const router = express.Router();
 
   router.get('/', (req, res) => {
@@ -34,5 +34,3 @@ const createRouter = () => {
 
   return router;
 };
-
-module.exports = { createRouter };

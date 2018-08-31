@@ -1,9 +1,9 @@
-const express = require('express');
-const bodyParser = require('body-parser');
-const { config } = require('./config');
-const { createSession } = require('./createSession');
-const { createDatabaseClient } = require('./createDatabaseClient');
-const { createRouter } = require('./createRouter');
+import bodyParser from 'body-parser';
+import express from 'express';
+import { config } from './config';
+import { createDatabaseClient } from './createDatabaseClient';
+import { createRouter } from './createRouter';
+import { createSession } from './createSession';
 
 const createApp = async () => {
   const app = express();
@@ -25,7 +25,7 @@ const createApp = async () => {
 
   app.use(createRouter());
 
-  app.use(async (error, req, res, next) => {
+  app.use(async (error: any, req: any, res: any, next: any) => {
     if (!error) {
       next(error);
       return;
