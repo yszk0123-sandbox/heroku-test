@@ -5,7 +5,7 @@
     "lib": ["esnext", "dom"],
     "declaration": true,
     "outDir": "./dist",
-    "rootDir": ".",
+    "rootDir": "./src",
     // "composite": true,
 
     /* Strict Type-Checking Options */
