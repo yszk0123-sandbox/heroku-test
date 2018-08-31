@@ -1,10 +1,10 @@
-const redis = require('connect-redis');
-const session = require('express-session');
-const { config } = require('./config');
+import redis from 'connect-redis';
+import session from 'express-session';
+import { config } from './config';
 
 const RedisStore = redis(session);
 
-const createSession = () => {
+export const createSession = () => {
   const store = new RedisStore({
     url: config.session.redis.url,
     prefix: 'sid:'
@@ -21,5 +21,3 @@ const createSession = () => {
     }
   });
 };
-
-module.exports = { createSession };

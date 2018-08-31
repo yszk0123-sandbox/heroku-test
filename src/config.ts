@@ -1,4 +1,4 @@
-const config = {
+export const config = {
   port: process.env.PORT || 3000,
   name: process.env.MY_NAME || 'unknown',
   production: process.env.NODE_ENV === 'production',
@@ -6,11 +6,9 @@ const config = {
     url: process.env.DATABASE_URL
   },
   session: {
-    secret: process.env.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET || 'secret',
     redis: {
       url: process.env.REDIS_URL
     }
   }
 };
-
-module.exports = { config };

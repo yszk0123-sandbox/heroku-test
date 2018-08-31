@@ -1,7 +1,7 @@
-const { Client } = require('pg');
-const { config } = require('./config');
+import { Client } from 'pg';
+import { config } from './config';
 
-const wasTableCreated = async (client, tableName) => {
+const wasTableCreated = async (client: Client, tableName: string) => {
   const result = await client.query(
     `SELECT exists (SELECT 1 FROM information_schema.tables WHERE table_schema = 'public' AND table_name = $1);`,
     [tableName]
@@ -10,7 +10,7 @@ const wasTableCreated = async (client, tableName) => {
   return !!row && row.exists;
 };
 
-const createDatabaseClient = async () => {
+export const createDatabaseClient = async () => {
   const client = new Client({
     connectionString: config.database.url
   });
@@ -24,5 +24,3 @@ const createDatabaseClient = async () => {
 
   return client;
 };
-
-module.exports = { createDatabaseClient };
